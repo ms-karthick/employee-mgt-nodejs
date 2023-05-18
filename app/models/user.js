@@ -1,11 +1,32 @@
-var mysql = require('mysql');
+module.exports = (sequelize, Sequelize, DataTypes) => {
+  const User = sequelize.define(
+    "user", // Model name
+    {
+      // Attributes
+      id: {
+        type: DataTypes.UUID,
+        defaultValue: Sequelize.UUIDV4,
+        primaryKey: true
+      },
+      username: {
+        type: DataTypes.STRING,
+        unique: true
+      },
+      email: {
+        type: DataTypes.STRING
+      },
+      password: {
+        type: DataTypes.STRING
+      }
+    },
+    {
+      // Options
+      timestamps: true,
+      underscrored: true,
+      createdAt: "created_at",
+      updatedAt: "updated_at"
+    }
+  );
 
-const userSchema = new mysql.Schema({
-  first_name: { type: String, default: null },
-  last_name: { type: String, default: null },
-  email: { type: String, unique: true },
-  password: { type: String },
-  token: { type: String },
-});
-
-module.exports = mysql.model("user", userSchema);
+  return User;
+};
