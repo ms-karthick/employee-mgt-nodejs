@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const db = require("./app/models");
 const Role = db.role;
 db.sequelize.sync().then(() => {
-  initial(); // Just use it in development, at the first time execution!. Delete it in production
+  // initial(); // Just use it in development, at the first time execution!. Delete it in production
 });
 
 // simple route
