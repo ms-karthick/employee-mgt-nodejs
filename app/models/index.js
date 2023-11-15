@@ -34,6 +34,7 @@ db.sequelize = sequelize;
 db.books = require("./book.js")(sequelize, Sequelize, DataTypes);
 db.user = require("./user.js")(sequelize, Sequelize, DataTypes);
 db.role = require("./role.js")(sequelize, Sequelize, DataTypes);
+db.product = require("./product.js")(sequelize, Sequelize, DataTypes);
 
 db.role.belongsToMany(db.user, {
   through: "user_roles",
